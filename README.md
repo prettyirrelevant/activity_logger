@@ -27,10 +27,7 @@ all data is stored locally in an sqlite database (`activity.db`) with configurab
 2. run: `./target/release/activity_logger`
 3. when prompted, grant accessibility permissions in the system dialog that appears
 
-> [!TIP]
-> learn how to [run processes in background on macos](https://support.apple.com/guide/terminal/run-commands-in-the-background-apdb8b956000/mac)
-
-### linux (x11 only)
+### linux
 
 1. install system dependencies: `sudo apt-get install libxdo-dev` (ubuntu/debian)
 2. build the project: `cargo build --release`
@@ -39,16 +36,10 @@ all data is stored locally in an sqlite database (`activity.db`) with configurab
 > [!WARNING]
 > x11 required. does not work with wayland or console environments
 
-> [!TIP]
-> learn how to [run processes in background on linux](https://www.geeksforgeeks.org/how-to-run-linux-programs-in-background/)
-
 ### windows
 
 1. build the project: `cargo build --release`
 2. run: `.\target\release\activity_logger.exe`
-
-> [!TIP]
-> learn about [running processes in background on windows](https://docs.microsoft.com/en-us/windows/win32/services/services)
 
 ## configuration
 
@@ -56,4 +47,7 @@ all data is stored locally in an sqlite database (`activity.db`) with configurab
 - **save frequency**: modify `SAVE_INTERVAL_SECONDS` in `src/main.rs` (default: 60 seconds)
 
 > [!CAUTION]
-> changing intervals requires rebuilding the project with `cargo build --release`
+> changing intervals requires rebuilding the project with `cargo build --release` and restarting the background service(if any).
+
+> [!TIP]
+> it's recommended to run this in the background
