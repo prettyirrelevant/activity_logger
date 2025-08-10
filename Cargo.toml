@@ -1,0 +1,20 @@
+[package]
+name = "activity_logger"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rdev = "0.4"
+rusqlite = "0.29"
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.0", features = ["rt-multi-thread", "time", "macros", "signal", "sync"] }
+jiff = "0.2"
+tracing = { version = "0.1", default-features = false }
+tracing-subscriber = { version = "0.3", default-features = false, features = ["fmt"] }
+
+[profile.release]
+opt-level = "z"      # optimize for size rather than speed
+lto = true           # enable link-time optimization for better dead code elimination
+strip = true         # remove debug symbols to reduce binary size
+codegen-units = 1    # use single codegen unit for better optimization
+panic = "abort"      # use abort instead of unwinding on panic
